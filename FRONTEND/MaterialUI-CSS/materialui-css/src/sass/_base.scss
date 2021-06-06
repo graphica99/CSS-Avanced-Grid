@@ -16,6 +16,11 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Lato', sans-serif;
 $font-display: 'Open Sans', sans-serif;
 
+//BREAK POINT VARIABLES
+$bp-largest: 75em; //1200px
+$bp-large: 62.5rem; //1000px
+
+
 *,
 *::before,
 *::after{
@@ -26,20 +31,26 @@ $font-display: 'Open Sans', sans-serif;
 
 html{
     box-sizing: border-box;
-    font-size: 62.5%; 
+    font-size: 62.5%;
+    @media only screen and (max-width:$bp-largest) {
+        font-size: 50.0%; 
+    } 
 }
 body{
+    filter: brightness(100%);
     font-family: $font-primary;
     color: $color-grey-dark-2;
     font-weight: 300;
 }
 
 .container{
-    display: grid;
-    grid-template-rows: 80vh min-content 40vw repeat(3,min-content);
-    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content , 14rem)[col-end]) [center-end] 1fr [full-end];
-    // & > * {
-    //     padding: 40px;
-    //     font-size: 3rem;
-    // }
+      display: grid;
+      grid-template-rows: 80vh min-content 40vw repeat(3,min-content);
+      grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content , 14rem)[col-end]) [center-end] 1fr [full-end];
+    
+    @media only screen and (max-width:$bp-large) {
+      display: grid;
+      grid-template-rows: 6rem 80vh min-content 40vw repeat(3,min-content);
+      grid-template-columns: [full-start] 1fr [center-start] repeat(8, [col-start] minmax(min-content , 14rem)[col-end]) [center-end] 1fr [full-end];
+    } 
 }
